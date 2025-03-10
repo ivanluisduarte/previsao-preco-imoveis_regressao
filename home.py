@@ -3,6 +3,7 @@
 # comentado para otimização, só é carregado na chamada inicial importado na função com cache
 # from joblib import load # para importar o modelo e os dados geográficos
 
+from geopandas import read_parquet as read_parquet_geo
 from pandas import cut, read_parquet
 from pydeck import Deck, Layer, ViewState
 import streamlit as st # interface WEB - https://streamlit.io/
@@ -32,10 +33,9 @@ st.set_page_config(
 
 @st.cache_data
 def carregar_dados_geograficos():
-    from geopandas import read_parquet as read_geo
     from notebooks.src.config import DADOS_GEO_DATAFRAME
 
-    return read_geo(DADOS_GEO_DATAFRAME)
+    return read_parquet_geo(DADOS_GEO_DATAFRAME)
 
 
 @st.cache_data
