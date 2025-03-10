@@ -2,12 +2,12 @@
 
 **Descrição:** Projeto de ciência de dados com previsão de preços de imóveis na Califórnia. Os dados utilizados no treinamento da regressão são de 1990 e não devem ser utilizados para fins comerciais nos tempos atuais.
 
-**Autor:** Ivan Luís Duarte
-**LinkedIn:** [linkedin.com/in/ivanluisduarte](https://www.linkedin.com/in/ivanluisduarte/)
-**GitHub:** [github.com/ivanluisduarte](https://github.com/ivanluisduarte)
-**Data de Criação:** 2025-03-10
-**Licença:** MIT
-**Aplicação** [Previsão de Preços de Imóveis](https://california.streamlit.app)
+**Autor:** Ivan Luís Duarte  
+**LinkedIn:** [linkedin.com/in/ivanluisduarte](https://www.linkedin.com/in/ivanluisduarte/)  
+**GitHub:** [github.com/ivanluisduarte](https://github.com/ivanluisduarte)  
+**Data de Criação:** 2025-03-10  
+**Licença:** MIT  
+**Aplicação** [Previsão de Preços de Imóveis](https://california.streamlit.app)  
 
 ![Previsão de Preços de Imóveis](./imagens/app.png)
 
