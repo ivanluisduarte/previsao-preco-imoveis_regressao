@@ -7,7 +7,7 @@
 **GitHub:** [github.com/ivanluisduarte](https://github.com/ivanluisduarte)
 **Data de Criação:** 2025-03-10
 **Licença:** MIT
-**Aplicação** [Previsão de Preços de Imóveis](https://california.streamlit.com)
+**Aplicação** [Previsão de Preços de Imóveis](https://california.streamlit.app)
 
 ![Previsão de Preços de Imóveis](./imagens/app.png)
 
