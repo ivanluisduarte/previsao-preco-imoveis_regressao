@@ -1,9 +1,22 @@
+'''
+Projeto: Previsão de Preços de Imóveis.
+Descrição: Projeto de ciência de dados com previsão de preços de imóveis na
+    Califórnia. Os dados utilizados no treinamento da regressão são de 1990 e
+    não devem ser utilizados para fins comerciais nos tempos atuais.
+Autor: Ivan Luís Duarte
+LinkedIn: https://www.linkedin.com/in/ivanluisduarte/
+GitHub: https://github.com/ivanluisduarte
+Data de Criação: 2025-03-10
+Licença: MIT
+'''
+
+################################################################################
 # %% IMPORTAÇÕES
 
 # comentado para otimização, só é carregado na chamada inicial importado na função com cache
+# from geopandas import read_parquet as read_parquet_geo
 # from joblib import load # para importar o modelo e os dados geográficos
 
-from geopandas import read_parquet as read_parquet_geo
 from pandas import cut, read_parquet
 from pydeck import Deck, Layer, ViewState
 import streamlit as st # interface WEB - https://streamlit.io/
@@ -13,6 +26,7 @@ import streamlit as st # interface WEB - https://streamlit.io/
 # from notebooks.src.config import(
 #     DADOS_GEO_DATAFRAME,
 #     DADOS_MEDIAN,
+#     DCT_CATEGORICAS_ORDENADAS,
 #     MODELO_FINAL,
 # )
 
@@ -32,21 +46,22 @@ st.set_page_config(
 # Python primitives, dataframe e API calls
 
 @st.cache_data
-def carregar_dados_geograficos():
+def fnc_carregar_dados_geograficos():
+    from geopandas import read_parquet as read_parquet_geo
     from notebooks.src.config import DADOS_GEO_DATAFRAME
 
     return read_parquet_geo(DADOS_GEO_DATAFRAME)
 
 
 @st.cache_data
-def carregar_dados_medianas():
+def fnc_carregar_dados_medianas():
     from notebooks.src.config import DADOS_MEDIAN
 
     return read_parquet(DADOS_MEDIAN)
 
 
 @st.cache_data
-def carregar_categorias_ordenadas():
+def fnc_carregar_categorias_ordenadas():
     from joblib import load
     from notebooks.src.config import DCT_CATEGORICAS_ORDENADAS
 
@@ -59,7 +74,7 @@ def carregar_categorias_ordenadas():
 # ML models e database connections
 
 @st.cache_resource
-def carregar_modelo():
+def fnc_carregar_modelo():
     from joblib import load
     from notebooks.src.config import MODELO_FINAL
 
@@ -68,10 +83,10 @@ def carregar_modelo():
 ################################################################################
 # %% carregando arquivos ou seu cache, se já existir
 
-gdf_geo = carregar_dados_geograficos()
-df_medianas = carregar_dados_medianas()
-dct_categoricas_ordenadas = carregar_categorias_ordenadas()
-modelo = carregar_modelo()
+gdf_geo = fnc_carregar_dados_geograficos()
+df_medianas = fnc_carregar_dados_medianas()
+dct_categoricas_ordenadas = fnc_carregar_categorias_ordenadas()
+modelo = fnc_carregar_modelo()
 
 ################################################################################
 # %% PAGINA WEB
@@ -89,13 +104,13 @@ LinkedIn: https://www.linkedin.com/in/ivanluisduarte/
 )
 
 # dividindo a tela em 2 colunas - formulário e mapa
-coluna1, coluna2 = st.columns(
+coluna_formulario, coluna_mapa = st.columns(
     spec=(0.3, 0.7),
     gap='small',
 )
 
 
-with coluna1:
+with coluna_formulario:
     # inputs - formulário
 
     with st.form(
@@ -183,7 +198,7 @@ de diversos indicadores do condado.Faça uma análise mais profunda do seu imóv
 ################################################################################
 # %% CONSTRUINDO O MAPA
 
-with coluna2:
+with coluna_mapa:
 
     # localização inicial - o condado selecionado fica no centro da visualização do mapa
     visualizacao_inicial = ViewState(
