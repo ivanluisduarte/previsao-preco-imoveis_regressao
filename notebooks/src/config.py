@@ -18,7 +18,7 @@ DADOS_Y_TRAIN = PASTA_DADOS / 'y_train.parquet'
 DADOS_Y_TEST = PASTA_DADOS / 'y_test.parquet'
 DADOS_Y_VALIDATION = PASTA_DADOS / 'y_validation.parquet'
 
-DADOS_GEO_DATAFRAME = PASTA_DADOS / 'california-counties.joblib'
+DADOS_GEO_DATAFRAME = PASTA_DADOS / 'california-counties.parquet'
 DADOS_GEO_ORIGINAIS = PASTA_DADOS / 'california-counties.geojson' # download de https://github.com/codeforgermany/click_that_hood/blob/main/public/data/california-counties.geojson
 
 DADOS_MEDIAN = PASTA_DADOS / 'df_counties_median.parquet'

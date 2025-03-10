@@ -17,16 +17,25 @@ import streamlit as st # interface WEB - https://streamlit.io/
 
 
 ################################################################################
+# %% CONFIGURAÇÕES DE PÁGINA
+titulo = 'Previsão de preços de imóveis na Califórnia'
+st.set_page_config(
+    page_title=titulo,
+    page_icon=':house:', # https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
+    layout='wide',
+)
+
+################################################################################
 # %% FUNÇÕES CACHE_DATA
 # qualquer coisa que possa ser armazenado em database
 # Python primitives, dataframe e API calls
 
 @st.cache_data
 def carregar_dados_geograficos():
-    from joblib import load
+    from geopandas import read_parquet as read_geo
     from notebooks.src.config import DADOS_GEO_DATAFRAME
 
-    return load(DADOS_GEO_DATAFRAME)
+    return read_geo(DADOS_GEO_DATAFRAME)
 
 
 @st.cache_data
@@ -66,12 +75,6 @@ modelo = carregar_modelo()
 
 ################################################################################
 # %% PAGINA WEB
-titulo = 'Previsão de preços de imóveis na Califórnia'
-st.set_page_config(
-    page_title=titulo,
-    page_icon=':house:', # https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
-    layout='wide',
-)
 st.title(
     body=titulo,
     help='''Não utilize para fins reais.
@@ -89,7 +92,6 @@ LinkedIn: https://www.linkedin.com/in/ivanluisduarte/
 coluna1, coluna2 = st.columns(
     spec=(0.3, 0.7),
     gap='small',
-    border=True
 )
 
 
