@@ -12,7 +12,6 @@ Licença: MIT
 
 ################################################################################
 from IPython.display import display
-import os
 import pandas as pd
 
 
@@ -20,7 +19,11 @@ from sklearn.base import (
     RegressorMixin, # Classe de regressão que deve implementar fit e predict
     BaseEstimator, # Classe de transformação que deve implementar fit e transform
 )
+
+from sklearn.exceptions import ConvergenceWarning
+
 from sklearn.compose import TransformedTargetRegressor # para transformar a variável alvo/target
+
 from sklearn.metrics import ( # https://scikit-learn.org/stable/api/sklearn.metrics.html#regression-metrics
     d2_absolute_error_score,        # D² regression score function, fraction of absolute error explained.
     d2_pinball_score,               # D² regression score function, fraction of pinball loss explained.
@@ -40,19 +43,25 @@ from sklearn.metrics import ( # https://scikit-learn.org/stable/api/sklearn.metr
     root_mean_squared_error,        # Root mean squared error regression loss.
     root_mean_squared_log_error,    # Root mean squared logarithmic error regression loss.
 )
+
 from sklearn.model_selection import (
     cross_validate, # validação cruzada para regressão
     GridSearchCV,
     KFold, # validação cruzada (k-fold) para regressão
 )
+
 from sklearn.pipeline import Pipeline # constroer pipeline com pré-processamento e regressor
+
+import warnings
 
 from .config import RANDOM_STATE
 from .auxiliares import fnc_exibir_dataframe_resultados
 from .graficos import PALETTE_TEMPERATURA
 
 
-
+warnings.filterwarnings("ignore", category=ConvergenceWarning)
+warnings.filterwarnings('ignore', category=RuntimeWarning)
+warnings.filterwarnings('ignore', category=UserWarning)
 
 
 
@@ -391,7 +400,6 @@ def fnc_organiza_resultados(
     df_resultados = df_resultados.explode(
         df_resultados.columns[1:].to_list()
     ).reset_index(drop=True)
-    print(df_resultados.columns)
 
     # Converte as colunas para o tipo numérico, ignorando erros de conversão
     for coluna in df_resultados.columns.difference(['model']):
