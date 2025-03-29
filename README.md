@@ -1,19 +1,23 @@
 # Projeto: Previsão de Preços de Imóveis
 
-**Descrição:** Projeto de ciência de dados com previsão de preços de imóveis na Califórnia. Os dados utilizados no treinamento da regressão são de 1990 e não devem ser utilizados para fins comerciais nos tempos atuais.
+**Descrição:** Projeto de ciência de dados com previsão de preços de imóveis na Califórnia. Os dados utilizados no treinamento da regressão são de 1990 e não devem ser utilizados para fins comerciais nos tempos atuais. Além disso, a interface propositalmente ignora o tamanho do imóvel (os dados estão agrupados por bloco e usa totalização de cômodos), que seria relevante para sua avaliação.
 
 **Autor:** Ivan Luís Duarte
-**LinkedIn:** [linkedin.com/in/ivanluisduarte](https://www.linkedin.com/in/ivanluisduarte/)
-**GitHub:** [github.com/ivanluisduarte](https://github.com/ivanluisduarte)
+**LinkedIn:** [linkedin.com/in/ivanluisduarte](https://www.linkedin.com/in/ivanluisduarte/ "https://www.linkedin.com/in/ivanluisduarte/")
+**GitHub:** [github.com/ivanluisduarte](https://github.com/ivanluisduarte "https://github.com/ivanluisduarte")
 **Data de Criação:** 2025-03-10
 **Licença:** MIT
-**Aplicação** [Previsão de Preços de Imóveis](https://california.streamlit.app)
+**Aplicação** [Previsão de Preços de Imóveis](https://california.streamlit.app "https://california.streamlit.app")
 
-![Previsão de Preços de Imóveis](./imagens/app.png)
+![Previsão de Preços de Imóveis](./imagens/app.png "https://california.streamlit.app")
+
+A aplicação está publicada em um ambiente gratuito da [Streamlit](https://streamlit.io/ "https://streamlit.io/") e "dorme" quando passa um tempo sem uso. Nesse caso, clique no botão azul da imagem abaixo e "acorde" a aplicação (isso pode levar dezenas de segundos para concluir):
+
+![Aplicação dormindo](./imagens/app_dormindo.png "Clique no botão azul (Yes, get this app back up!) para acordar a aplicação")
 
 # Sobre este projeto de ciência de dados
 
-Baseado no modelo de [Francisco Bustamante](https://github.com/chicolucio/modelo_projeto_data_science), que foi meu instrutor na base desse trabalho, no treinamento de regressão linear do curso de ciência de dados da Hashtag Treinamentos.
+Baseado no modelo de [Francisco Bustamante](https://github.com/chicolucio/modelo_projeto_data_science "https://github.com/chicolucio/modelo_projeto_data_science"), que foi meu instrutor na base desse trabalho, no treinamento de regressão linear do curso de ciência de dados da Hashtag Treinamentos.
 
 Apesar da idéia inicial ser do curso da Hashtag Treinamentos, todas as decições sobre features, algorítmos e escolha de modelos foi refeita, melhorada e comentada. Um modelo com mais features foi usado ao final. A preparação dos dados para o mapa da interface web e a construção dele ficou mais simples e direta.
 
@@ -25,6 +29,8 @@ Muitas funções foram criadas por mim, tornando esse projeto praticamente um fr
 - Condado por sua vez, é uma região geográfica que agrupa cidades e são subdivisões dos estados, com certa autonomia administrativa, o que simplifica a interface para interação com o usuário e previsão de preços de casas nesses condado;
 - Alguns dados, são pedidos na interface para detalhar o imóvel e renda, mas para alcançar essa simplificação, utilizamos a mediana e as modas dos dados de todos os blocos contidos naquele condado.
 - Mediana para tentar evitar interferência de outliers. Alguns condados, se observado no mapa, são rurais ou desérticos e sua população acaba se concentando em pontos específicos, com pequenos grupos dispersos que seriam outliers;
+
+## Importante
 
 Leia o arquivo de [01_dicionario_de_dados.md](./referencias/01_dicionario_de_dados.md) para detalhes sobre a base.
 
