@@ -9,4 +9,4 @@ scikit-learn==1.6.1
 scipy==1.15.1
 seaborn==0.13.2
 shapely==2.0.6
-streamlit==1.37.1
+streamlit==1.54.0
